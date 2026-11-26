@@ -30,6 +30,11 @@
 
   <main id="content">
     <section class="hero-band" id="top" aria-labelledby="hero-title">
+      <div class="hero-panorama" aria-hidden="true">
+        <img class="hero-calibration" src="assets/media/workflow-calibration.webp" alt="" width="780" height="420" decoding="async">
+        <img class="hero-simulation" src="assets/media/workflow-simulation.webp" alt="" width="780" height="420" decoding="async">
+        <img class="hero-deployment" src="assets/media/workflow-deployment.webp" alt="" width="780" height="420" fetchpriority="high">
+      </div>
       <div class="hero shell">
         <div class="hero-copy">
           <p class="eyebrow">Whole-body data generation</p>
@@ -37,24 +42,15 @@
           <p class="hero-title">Scalable task-level data generation for humanoid loco-manipulation with <strong>KeypointVLA</strong></p>
           <p class="hero-intro">Compose reusable atomic skills into physics-verified demonstrations, then train KeypointVLA for zero-shot control on a real humanoid.</p>
           <div class="actions">
-            <a class="button primary" href="#hardware">Explore hardware experiments</a>
+            <a class="button primary" href="#hardware">Watch hardware trials</a>
             <a class="button light" href="#method">Explore method</a>
           </div>
+          <nav class="workflow-strip" aria-label="HuScale workflow">
+            <a href="#method">Skill calibration</a>
+            <a href="#data">Simulation collection</a>
+            <a href="#zero-shot">Zero-shot deployment</a>
+          </nav>
         </div>
-        <nav class="workflow-strip" aria-label="HuScale workflow">
-          <a href="#method">
-            <img src="assets/media/workflow-calibration.webp" alt="Object-relative keypoints for an atomic skill being calibrated." width="780" height="420" fetchpriority="high">
-            <span>Skill calibration</span>
-          </a>
-          <a href="#data">
-            <img src="assets/media/workflow-simulation.webp" alt="A humanoid executes a composed manipulation task in simulation." width="780" height="420" fetchpriority="high">
-            <span>Simulation collection</span>
-          </a>
-          <a href="#zero-shot">
-            <img src="assets/media/workflow-deployment.webp" alt="A physical Unitree G1 transfers a bottle to a green box." width="780" height="420" fetchpriority="high">
-            <span>Zero-shot deployment</span>
-          </a>
-        </nav>
       </div>
     </section>
 
@@ -163,19 +159,30 @@
 
       <section class="hardware-mode" id="perturbation" aria-labelledby="perturbation-title">
         <div class="mode-head">
-          <div><h3 id="perturbation-title">Recovery after a push</h3><p>A qualitative zero-shot KeypointVLA rollout.</p></div>
+          <div><h3 id="perturbation-title">Recovery after a push</h3><p>Two zero-shot KeypointVLA rollouts with external pushes.</p></div>
         </div>
-        <article class="recovery-feature">
-          <a class="recovery-media media-trigger" href="assets/media/push-green-box.mp4" data-title="Green-Box Placement under a push" data-subtitle="KeypointVLA · External perturbation on Unitree G1" data-poster="assets/media/push-green-box.webp" aria-label="Play Green-Box Placement under a push">
-              <img src="assets/media/push-green-box.webp" alt="An operator pushes the robot during a Green-Box Placement rollout." loading="lazy">
-              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+        <div class="recovery-grid">
+          <article class="recovery-card">
+            <a class="recovery-media media-trigger" href="assets/media/push-green-box.mp4" data-title="Green-Box Placement under a push" data-subtitle="KeypointVLA · External perturbation on Unitree G1" data-poster="assets/media/push-green-box.webp" aria-label="Play Green-Box Placement under a push">
+              <img src="assets/media/push-green-box.webp" alt="An operator pushes the robot during a Green-Box Placement rollout." loading="lazy" width="1024" height="642">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
             </a>
-          <div class="recovery-copy">
-            <p class="eyebrow">Green-Box Placement</p>
-            <h4>Regain balance and resume</h4>
-            <p>After an external push, the robot regains its balance and continues the task, placing the bottle into the green box.</p>
-          </div>
-        </article>
+            <div class="recovery-copy">
+              <h4>Green-Box Placement</h4>
+              <p>The robot regains its balance and places the bottle in the green box.</p>
+            </div>
+          </article>
+          <article class="recovery-card">
+            <a class="recovery-media media-trigger" href="assets/media/push-cabinet.mp4" data-title="Bedside Cabinet under a push" data-subtitle="KeypointVLA · External perturbation on Unitree G1" data-poster="assets/media/push-cabinet.webp" aria-label="Play Bedside Cabinet under a push">
+              <img src="assets/media/push-cabinet.webp" alt="The robot corrects its stance after a push during the Bedside Cabinet rollout." loading="lazy" width="924" height="722">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+            </a>
+            <div class="recovery-copy">
+              <h4>Bedside Cabinet</h4>
+              <p>The robot recovers from the push and resumes the drawer task.</p>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section class="hardware-mode failures" id="failure-cases" aria-labelledby="failures-title">
