@@ -1,3 +1,5 @@
+// Task media revisions (content fingerprints).
+const taskMediaRevs = {"task-1.mp4": "7edb3f6b2d02", "task-2.mp4": "9ab15e8a6a1f", "task-3.mp4": "1daaabbf9f1e", "task-4.mp4": "135fb2a64784", "task-5.mp4": "fd20a18811d7", "task-6.mp4": "aab82ef9f287"};
 "use strict";
 const tasks = [
   ["Pick-and-Lift", "Walk to the table, grasp the bottle, and lift it clear of the support."],
@@ -32,7 +34,8 @@ function activate(tab, focus = false) {
   panel.setAttribute("aria-labelledby", tab.id);
   player.pause();
   player.poster = "assets/media/task-" + index + ".webp";
-  player.src = "assets/media/task-" + index + ".mp4";
+  const clip = "task-" + index + ".mp4";
+  player.src = "assets/media/" + clip + "?v=" + taskMediaRevs[clip];
   player.setAttribute("aria-label", title + " simulation rollout");
   document.getElementById("task-name").textContent = title;
   document.getElementById("task-description").textContent = caption;
