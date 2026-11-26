@@ -11,6 +11,16 @@ const tasks = [
 const tabs = Array.from(document.querySelectorAll("[data-task]"));
 const panel = document.getElementById("task-panel");
 const player = document.getElementById("task-player");
+const demo = document.getElementById("demo-player");
+demo.addEventListener("play", () => player.pause());
+player.addEventListener("play", () => demo.pause());
+for (const chapter of document.querySelectorAll("[data-demo-time]")) {
+  chapter.addEventListener("click", () => {
+    demo.currentTime = Number(chapter.dataset.demoTime);
+    demo.play().catch(() => {});
+    if (matchMedia("(max-width: 720px)").matches) demo.scrollIntoView({block:"center"});
+  });
+}
 function activate(tab, focus = false) {
   const index = Number(tab.dataset.task);
   const [title, caption] = tasks[index - 1];
@@ -54,6 +64,7 @@ if (typeof dialog.showModal === "function") {
       event.preventDefault();
       opener = link;
       player.pause();
+      demo.pause();
       document.getElementById("dialog-title").textContent = link.dataset.title;
       document.getElementById("dialog-subtitle").textContent = link.dataset.subtitle || "";
       const isVideo = link.classList.contains("media-trigger");

@@ -10,8 +10,8 @@
   <meta property="og:description" content="Scalable task-level data generation for humanoid loco-manipulation with KeypointVLA.">
   <title>HuScale — Humanoid Loco-Manipulation with KeypointVLA</title>
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/site.css?v=bf5912c9a39b">
-  <script src="assets/site.js?v=d055bec6c018" defer></script>
+  <link rel="stylesheet" href="assets/site.css?v=bd674c57dd09">
+  <script src="assets/site.js?v=44a3f2a53758" defer></script>
 </head>
 <body>
   <a class="skip" href="#content">Skip to content</a>
@@ -42,8 +42,11 @@
           <p class="hero-title">Scalable task-level data generation for humanoid loco-manipulation with <strong>KeypointVLA</strong></p>
           <p class="hero-intro">Compose reusable atomic skills into physics-verified demonstrations, then train KeypointVLA for zero-shot control on a real humanoid.</p>
           <div class="actions">
-            <a class="button primary" href="#hardware">Watch hardware trials</a>
-            <a class="button light" href="#method">Explore method</a>
+            <a class="button primary" href="#demo">
+              <svg class="play-icon" aria-hidden="true" viewBox="0 0 20 20"><path fill="currentColor" d="M6 3.5v13l10-6.5z"/></svg>
+              Watch the demo
+            </a>
+            <a class="button light" href="#hardware">Real-robot trials</a>
           </div>
           <nav class="workflow-strip" aria-label="HuScale workflow">
             <a href="#method">Skill calibration</a>
@@ -62,6 +65,27 @@
         <div><dt>3</dt><dd>VLA backbones <small>GR00T, π<sub>0.5</sub>, and ψ<sub>0</sub></small></dd></div>
       </dl>
     </div>
+
+    <section class="shell demo-section" id="demo" aria-labelledby="demo-title">
+      <div class="demo-intro">
+        <p class="eyebrow"><span class="rule"></span> Project overview</p>
+        <h2 id="demo-title">Full project demo</h2>
+        <p>Follow a calibrated skill from physics preview and parallel data collection to zero-shot control on a real humanoid.</p>
+        <p class="demo-meta"><time datetime="PT6M57S">6:57</time><span>English narration and captions</span></p>
+      </div>
+      <figure class="demo-viewer">
+        <video id="demo-player" controls playsinline preload="none" width="1920" height="1080" poster="assets/media/huscale-demo.webp" src="assets/media/huscale-demo.mp4?v=375219e2bafc" aria-label="HuScale full project demo">
+          <a href="assets/media/huscale-demo.mp4?v=375219e2bafc">Open the full project demo</a>
+        </video>
+        <figcaption>Music · <a href="https://www.incompetech.com/music/royalty-free/index.html?isrc=USUAN1500025">Daily Beetle</a> by Kevin MacLeod featuring Brett Van Donsel (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>). Edited and mixed for this demo.</figcaption>
+      </figure>
+      <div class="demo-chapters" role="group" aria-label="Jump to a demo chapter">
+        <button type="button" data-demo-time="60"><span>Skill calibration</span><time datetime="PT1M">1:00</time></button>
+        <button type="button" data-demo-time="100.60"><span>Simulation collection</span><time datetime="PT1M40.60S">1:41</time></button>
+        <button type="button" data-demo-time="174.68"><span>Real-robot trials</span><time datetime="PT2M54.68S">2:55</time></button>
+        <button type="button" data-demo-time="349.52"><span>Perturbation recovery</span><time datetime="PT5M49.52S">5:50</time></button>
+      </div>
+    </section>
 
     <section class="shell section hardware-section" id="hardware" aria-labelledby="hw-title">
       <div class="section-head split-head">
@@ -173,7 +197,7 @@
             </div>
           </article>
           <article class="recovery-card">
-            <a class="recovery-media media-trigger" href="assets/media/push-cabinet.mp4?v=47bc277e4058" data-title="Bedside Cabinet under a push" data-subtitle="KeypointVLA · External perturbation on Unitree G1" data-poster="assets/media/push-cabinet.webp" aria-label="Play Bedside Cabinet under a push">
+            <a class="recovery-media media-trigger" href="assets/media/push-cabinet.mp4?v=b6d63c8ce449" data-title="Bedside Cabinet under a push" data-subtitle="KeypointVLA · External perturbation on Unitree G1" data-poster="assets/media/push-cabinet.webp" aria-label="Play Bedside Cabinet under a push">
               <img src="assets/media/push-cabinet.webp" alt="The robot corrects its stance after a push during the Bedside Cabinet rollout." loading="lazy" width="924" height="722">
               <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
             </a>
