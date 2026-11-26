@@ -90,12 +90,12 @@ sub { font-size:.72em; }
 .play-badge { display:grid; place-items:center; position:absolute; bottom:.8rem; right:.85rem; width:2.65rem; height:2.65rem; background:#fff; color:var(--deep); border:1px solid #d8e5dc; border-radius:50%; box-shadow:0 3px 12px #173b3330; }
 .media-trigger:hover .play-badge { background:var(--lime); border-color:var(--lime); }
 .metric-rail { background:#e7f1e8; border-block:1px solid #d4e5d7; }
-.metrics { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); padding:1.04rem 0; }
-.metrics > div { display:flex; align-items:center; gap:.7rem; padding:.64rem clamp(.64rem,1.55vw,1.4rem); border-left:1px solid #c8ded0; }
+.metrics { container-type:inline-size; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); padding:.88rem 0; }
+.metrics > div { display:flex; flex-direction:column; gap:.38rem; min-width:0; padding:.36rem clamp(.6rem,1.55vw,1.4rem); border-left:1px solid #c8ded0; }
 .metrics > div:first-child { padding-left:0; border-left:0; }
-.metrics dt { font:700 clamp(1.85rem,3.1vw,3.15rem)/1 var(--serif); letter-spacing:-.065em; color:var(--deep); white-space:nowrap; }
+.metrics dt { font:700 clamp(1.85rem,3.1vw,3.15rem)/1 var(--serif); font-size:min(clamp(1.85rem,3.1vw,3.15rem),5.5cqi); letter-spacing:-.065em; color:var(--deep); white-space:nowrap; }
 .metric-unit { font-size:.55em; letter-spacing:0; }
-.metrics dd { font-size:.92rem; font-weight:670; }
+.metrics dd { min-width:0; font-size:.92rem; font-weight:670; line-height:1.3; overflow-wrap:anywhere; }
 .metrics small { display:block; margin-top:.1rem; font-size:.79rem; line-height:1.35; color:var(--muted); font-weight:500; }
 .section { padding-block:clamp(3.2rem,6.3vw,5.55rem); }
 .section-head { max-width:55rem; margin-bottom:1.8rem; }
@@ -194,7 +194,6 @@ sub { font-size:.72em; }
 .dialog-content img,.dialog-content video { background:#0f221e; max-height:calc(92vh - 5rem); width:100%; object-fit:contain; }
 @media (max-width:1050px) {
   .shell { width:min(calc(100% - 3.5rem),76rem); }
-  .metrics > div { gap:.65rem; }
   .task-heading h4 { font-size:1.03rem; }
 }
 @media (max-width:800px) {
@@ -212,7 +211,7 @@ sub { font-size:.72em; }
   .method-layout { grid-template-columns:1fr; }
   .method-steps { grid-template-columns:repeat(3,minmax(0,1fr)); gap:.8rem; }
   .method-steps li,.method-steps li:first-child { flex-direction:column; border:0; padding:.12rem 0; }
-  .metrics > div { flex-direction:column; align-items:flex-start; padding-inline:.65rem; gap:.4rem; }
+  .metrics > div { padding-inline:.65rem; }
   .metrics dd { font-size:.84rem; }
   .metrics small { font-size:.77rem; }
   .hardware-grid { gap:.7rem; }
@@ -221,6 +220,14 @@ sub { font-size:.72em; }
   .task-body { padding:.8rem; }
   .task-body p { font-size:.9rem; }
   .evidence { padding:.88rem; }
+}
+@media (max-width:640px) {
+  .metrics { grid-template-columns:repeat(2,minmax(0,1fr)); padding:.35rem 0; }
+  .metrics dt { font-size:2.2rem; font-size:min(2.2rem,11.7cqi); }
+  .metrics > div { padding:.7rem .58rem; }
+  .metrics > div:nth-child(odd) { padding-left:0; border-left:0; }
+  .metrics > div:nth-child(n+3) { border-top:1px solid #c8ded0; }
+  .metrics small { font-size:.76rem; }
 }
 @media (max-width:560px) {
   .shell { width:calc(100% - 1.6rem); }
@@ -238,13 +245,6 @@ sub { font-size:.72em; }
   .workflow-strip { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); align-items:stretch; margin-top:1.2rem; gap:0; }
   .workflow-strip a { padding:.14rem .38rem; font-size:.8rem; text-wrap:pretty; }
   .workflow-strip a + a { padding-left:.58rem; }
-  .metrics { grid-template-columns:1fr 1fr; padding:.35rem 0; }
-  .metrics dt { font-size:2.2rem; }
-  .metrics > div { padding:.7rem .58rem; }
-  .metrics > div:nth-child(odd) { padding-left:0; border-left:0; }
-  .metrics > div:nth-child(n+3) { border-top:1px solid #c8ded0; }
-  .metrics dd { line-height:1.28; }
-  .metrics small { font-size:.72rem; }
   .hardware-grid, .evidence-grid, .resources, .stereo, .recovery-grid, .failure-grid { grid-template-columns:1fr; }
   .mode-head { flex-wrap:wrap; }
   .hardware-mode + .hardware-mode { margin-top:2rem; padding-top:1.6rem; }
