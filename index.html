@@ -31,31 +31,30 @@
   <main id="content">
     <section class="hero-band" id="top" aria-labelledby="hero-title">
       <div class="hero shell">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="rule"></span> A whole-body robot learning project</p>
-        <h1 id="hero-title">HuScale</h1>
-        <p class="hero-title">Scalable task-level data generation for humanoid loco-manipulation with <strong>KeypointVLA</strong></p>
-        <p class="hero-intro">HuScale turns reusable atomic skills into large-scale, physics-verified demonstrations. KeypointVLA learns from them and transfers to a physical Unitree G1 without real-world training demonstrations.</p>
-        <div class="actions">
-          <a class="button primary" href="#hardware"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.3 13 8l-8 4.7z" fill="currentColor"/></svg> Watch rollouts</a>
-          <a class="button light" href="#method">Explore method</a>
-        </div>
-      </div>
-        <figure class="hero-media">
-          <div class="hero-pair">
-            <a class="hero-video sim-view media-trigger" href="assets/media/task-3.mp4" data-title="Pedal Disposal in simulation" data-subtitle="HuScale · Physics-verified simulation collection" data-poster="assets/media/task-3.webp" aria-label="Play the simulated Pedal Disposal demonstration">
-              <img src="assets/media/hero-sim.webp" width="520" height="588" alt="A simulated G1 brings a bottle to a black pedal bin." fetchpriority="high">
-              <span class="hero-media-label">Simulation</span>
-              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
-            </a>
-            <a class="hero-video real-view media-trigger" href="assets/media/pedal.mp4" data-title="Pedal Disposal on Unitree G1" data-subtitle="KeypointVLA · Zero-shot deployment on Unitree G1" data-poster="assets/media/pedal.webp" aria-label="Play the physical Pedal Disposal rollout">
-              <img src="assets/media/pedal.webp" width="1120" height="744" alt="A physical Unitree G1 steps onto a pedal to open the bin lid while holding a bottle." fetchpriority="high">
-              <span class="hero-media-label">Physical robot</span>
-              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
-            </a>
+        <div class="hero-copy">
+          <p class="eyebrow">Whole-body data generation</p>
+          <h1 id="hero-title">HuScale</h1>
+          <p class="hero-title">Scalable task-level data generation for humanoid loco-manipulation with <strong>KeypointVLA</strong></p>
+          <p class="hero-intro">Compose reusable atomic skills into physics-verified demonstrations, then train KeypointVLA for zero-shot control on a real humanoid.</p>
+          <div class="actions">
+            <a class="button primary" href="#hardware">Explore hardware experiments</a>
+            <a class="button light" href="#method">Explore method</a>
           </div>
-          <figcaption><strong>Pedal Disposal</strong><span>Simulated collection · Zero-shot policy execution</span></figcaption>
-        </figure>
+        </div>
+        <nav class="workflow-strip" aria-label="HuScale workflow">
+          <a href="#method">
+            <img src="assets/media/workflow-calibration.webp" alt="Object-relative keypoints for an atomic skill being calibrated." width="780" height="420" fetchpriority="high">
+            <span>Skill calibration</span>
+          </a>
+          <a href="#data">
+            <img src="assets/media/workflow-simulation.webp" alt="A humanoid executes a composed manipulation task in simulation." width="780" height="420" fetchpriority="high">
+            <span>Simulation collection</span>
+          </a>
+          <a href="#zero-shot">
+            <img src="assets/media/workflow-deployment.webp" alt="A physical Unitree G1 transfers a bottle to a green box." width="780" height="420" fetchpriority="high">
+            <span>Zero-shot deployment</span>
+          </a>
+        </nav>
       </div>
     </section>
 
@@ -68,47 +67,138 @@
       </dl>
     </div>
 
-    <section class="shell section" id="hardware" aria-labelledby="hw-title">
+    <section class="shell section hardware-section" id="hardware" aria-labelledby="hw-title">
       <div class="section-head split-head">
         <div>
-          <p class="eyebrow"><span class="rule"></span> Real-robot deployment</p>
-          <h2 id="hw-title">Zero-shot on a physical G1.</h2>
+          <p class="eyebrow"><span class="rule"></span> Real-robot experiments</p>
+          <h2 id="hw-title">Collect and deploy on a physical G1.</h2>
         </div>
-        <p>KeypointVLA trains on visually augmented simulation demonstrations for each hardware task. The rollouts below are learned policy executions, separate from collector-driven physical demonstrations.</p>
+        <p>The same tasks are run in two settings. The HuScale collector executes calibrated skills on hardware, while KeypointVLA runs a learned policy trained only on simulated demonstrations.</p>
       </div>
-      <div class="hardware-grid">
-        <article class="task-card">
-          <a class="task-media media-trigger" href="assets/media/green-box.mp4" data-title="Green-Box Placement" data-subtitle="KeypointVLA · Zero-shot deployment on Unitree G1" data-poster="assets/media/green-box.webp">
-            <img src="assets/media/green-box.webp" width="1120" height="672" alt="G1 carries a bottle toward a green box on a second table." loading="lazy">
-            <span class="play-badge" aria-label="Play Green-Box Placement"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
-          </a>
-          <div class="task-body">
-            <div class="task-heading"><h3>Green-Box Placement</h3><span class="result-tag">8/10</span></div>
-            <p>Walk up to the bottle, grasp it, and carry it to the green box for release.</p>
+      <nav class="hardware-jump" aria-label="Real-robot evidence">
+        <a href="#physical-collection">Physical data collection</a>
+        <a href="#zero-shot">Zero-shot deployment</a>
+        <a href="#perturbation">Perturbation recovery</a>
+        <a href="#failure-cases">Failure cases</a>
+      </nav>
+
+      <section class="hardware-mode" id="physical-collection" aria-labelledby="collection-title">
+        <div class="mode-head">
+          <div><h3 id="collection-title">Physical data collection</h3><p>Calibrated atomic skills, measured object poses, and online IK drive the collector.</p></div>
+          <span class="mode-metric collection-metric">Mean execution time</span>
+        </div>
+        <div class="hardware-grid">
+          <article class="task-card">
+            <a class="task-media media-trigger" href="assets/media/collect-green-box.mp4" data-title="Green-Box Placement collection" data-subtitle="HuScale · Physical data collection" data-poster="assets/media/collect-green-box.webp" aria-label="Play Green-Box Placement collection">
+              <img src="assets/media/collect-green-box.webp" alt="G1 carries the bottle toward the green box." loading="lazy">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+            </a>
+            <div class="task-body">
+              <div class="task-heading"><h4>Green-Box Placement</h4><span class="result-tag time-tag" aria-label="58 seconds mean execution time">58 s</span></div>
+              <p>Pick up the bottle and carry it to the green box.</p>
+            </div>
+          </article>
+          <article class="task-card">
+            <a class="task-media media-trigger" href="assets/media/collect-cabinet.mp4" data-title="Bedside Cabinet collection" data-subtitle="HuScale · Physical data collection" data-poster="assets/media/collect-cabinet.webp" aria-label="Play Bedside Cabinet collection">
+              <img src="assets/media/collect-cabinet.webp" alt="G1 interacts with the bedside cabinet drawer." loading="lazy">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+            </a>
+            <div class="task-body">
+              <div class="task-heading"><h4>Bedside Cabinet</h4><span class="result-tag time-tag" aria-label="109 seconds mean execution time">109 s</span></div>
+              <p>Place the bottle in the drawer and close it.</p>
+            </div>
+          </article>
+          <article class="task-card">
+            <a class="task-media media-trigger" href="assets/media/collect-pedal.mp4" data-title="Pedal Disposal collection" data-subtitle="HuScale · Physical data collection" data-poster="assets/media/collect-pedal.webp" aria-label="Play Pedal Disposal collection">
+              <img src="assets/media/collect-pedal.webp" alt="G1 holds the bottle over the pedal-operated bin." loading="lazy">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+            </a>
+            <div class="task-body">
+              <div class="task-heading"><h4>Pedal Disposal</h4><span class="result-tag time-tag" aria-label="71 seconds mean execution time">71 s</span></div>
+              <p>Open the bin with the pedal and drop the bottle inside.</p>
+            </div>
+          </article>
+        </div>
+        <p class="figure-note">Time is measured from motion onset to completion or termination, including online waits, and averaged across trials.</p>
+      </section>
+
+      <section class="hardware-mode" id="zero-shot" aria-labelledby="zero-shot-title">
+        <div class="mode-head">
+          <div><h3 id="zero-shot-title">Zero-shot deployment</h3><p>KeypointVLA runs in closed loop, without training or fine-tuning on real-robot demonstrations.</p></div>
+          <span class="mode-metric deployment-metric">Task success rate</span>
+        </div>
+        <div class="hardware-grid">
+          <article class="task-card">
+            <a class="task-media media-trigger" href="assets/media/green-box.mp4" data-title="Green-Box Placement zero-shot rollout" data-subtitle="KeypointVLA · Zero-shot deployment on Unitree G1" data-poster="assets/media/green-box.webp" aria-label="Play Green-Box Placement zero-shot rollout">
+              <img src="assets/media/green-box.webp" alt="G1 carries the bottle toward the green box." loading="lazy">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+            </a>
+            <div class="task-body">
+              <div class="task-heading"><h4>Green-Box Placement</h4><span class="result-tag success-tag" aria-label="8 of 10 trials succeeded">80%</span></div>
+              <p>8 of 10 trials succeeded.</p>
+            </div>
+          </article>
+          <article class="task-card">
+            <a class="task-media media-trigger" href="assets/media/cabinet.mp4" data-title="Bedside Cabinet zero-shot rollout" data-subtitle="KeypointVLA · Zero-shot deployment on Unitree G1" data-poster="assets/media/cabinet.webp" aria-label="Play Bedside Cabinet zero-shot rollout">
+              <img src="assets/media/cabinet.webp" alt="G1 interacts with the bedside cabinet drawer." loading="lazy">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+            </a>
+            <div class="task-body">
+              <div class="task-heading"><h4>Bedside Cabinet</h4><span class="result-tag success-tag" aria-label="7 of 10 trials succeeded">70%</span></div>
+              <p>7 of 10 trials succeeded.</p>
+            </div>
+          </article>
+          <article class="task-card">
+            <a class="task-media media-trigger" href="assets/media/pedal.mp4" data-title="Pedal Disposal zero-shot rollout" data-subtitle="KeypointVLA · Zero-shot deployment on Unitree G1" data-poster="assets/media/pedal.webp" aria-label="Play Pedal Disposal zero-shot rollout">
+              <img src="assets/media/pedal.webp" alt="G1 holds the bottle over the pedal-operated bin." loading="lazy">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+            </a>
+            <div class="task-body">
+              <div class="task-heading"><h4>Pedal Disposal</h4><span class="result-tag success-tag" aria-label="4 of 10 trials succeeded">40%</span></div>
+              <p>4 of 10 trials succeeded.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="hardware-mode" id="perturbation" aria-labelledby="perturbation-title">
+        <div class="mode-head">
+          <div><h3 id="perturbation-title">Recovery after a push</h3><p>A qualitative zero-shot KeypointVLA rollout.</p></div>
+        </div>
+        <article class="recovery-feature">
+          <a class="recovery-media media-trigger" href="assets/media/push-green-box.mp4" data-title="Green-Box Placement under a push" data-subtitle="KeypointVLA · External perturbation on Unitree G1" data-poster="assets/media/push-green-box.webp" aria-label="Play Green-Box Placement under a push">
+              <img src="assets/media/push-green-box.webp" alt="An operator pushes the robot during a Green-Box Placement rollout." loading="lazy">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+            </a>
+          <div class="recovery-copy">
+            <p class="eyebrow">Green-Box Placement</p>
+            <h4>Regain balance and resume</h4>
+            <p>After an external push, the robot regains its balance and continues the task, placing the bottle into the green box.</p>
           </div>
         </article>
-        <article class="task-card">
-          <a class="task-media media-trigger" href="assets/media/cabinet.mp4" data-title="Bedside Cabinet" data-subtitle="KeypointVLA · Zero-shot deployment on Unitree G1" data-poster="assets/media/cabinet.webp">
-            <img src="assets/media/cabinet.webp" width="1120" height="722" alt="G1 crouches with the bottle near the open drawer of a bedside cabinet." loading="lazy">
-            <span class="play-badge" aria-label="Play Bedside Cabinet"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
-          </a>
-          <div class="task-body">
-            <div class="task-heading"><h3>Bedside Cabinet</h3><span class="result-tag">7/10</span></div>
-            <p>Open the drawer, put the bottle inside, and close the drawer again.</p>
-          </div>
-        </article>
-        <article class="task-card">
-          <a class="task-media media-trigger" href="assets/media/pedal.mp4" data-title="Pedal Disposal" data-subtitle="KeypointVLA · Zero-shot deployment on Unitree G1" data-poster="assets/media/pedal.webp">
-            <img src="assets/media/pedal.webp" width="1120" height="744" alt="G1 holds a bottle above a pedal-operated bin." loading="lazy">
-            <span class="play-badge" aria-label="Play Pedal Disposal"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
-          </a>
-          <div class="task-body">
-            <div class="task-heading"><h3>Pedal Disposal</h3><span class="result-tag">4/10</span></div>
-            <p>Press the pedal with a foot and release the bottle while the lid is open.</p>
-          </div>
-        </article>
-      </div>
-      <p class="figure-note">Badges show successful zero-shot trials out of ten in the paper. Each clip shows one selected rollout.</p>
+      </section>
+
+      <section class="hardware-mode failures" id="failure-cases" aria-labelledby="failures-title">
+        <div class="mode-head">
+          <div><h3 id="failures-title">Failure cases</h3><p>Two Pedal Disposal rollouts illustrate different points of failure.</p></div>
+        </div>
+        <div class="failure-grid">
+          <article class="failure-card">
+            <a class="failure-media media-trigger" href="assets/media/failure-grasp.mp4" data-title="Bottle tips during grasping" data-subtitle="Pedal Disposal · Failed zero-shot rollout" data-poster="assets/media/failure-grasp.webp" aria-label="Play Bottle tips during grasping">
+              <img src="assets/media/failure-grasp.webp" alt="The bottle tips near the edge of the table as G1 tries to grasp it." loading="lazy">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+            </a>
+            <div><h4>Bottle tips during grasping</h4><p>The bottle falls off the table before transport.</p></div>
+          </article>
+          <article class="failure-card">
+            <a class="failure-media media-trigger" href="assets/media/failure-lid.mp4" data-title="Release with the lid closed" data-subtitle="Pedal Disposal · Failed zero-shot rollout" data-poster="assets/media/failure-lid.webp" aria-label="Play Release with the lid closed">
+              <img src="assets/media/failure-lid.webp" alt="G1 holds the bottle above a bin whose lid remains closed." loading="lazy">
+              <span class="play-badge" aria-hidden="true"><svg class="play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3 13 8l-8 5z" fill="currentColor"/></svg></span>
+            </a>
+            <div><h4>Release with the lid closed</h4><p>The bottle strikes the lid instead of entering the bin.</p></div>
+          </article>
+        </div>
+      </section>
     </section>
 
     <section class="tinted" id="method" aria-labelledby="method-title">
