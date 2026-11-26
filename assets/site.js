@@ -1,6 +1,7 @@
-// Task media revisions (content fingerprints).
-const taskMediaRevs = {"task-1.mp4": "7edb3f6b2d02", "task-2.mp4": "9ab15e8a6a1f", "task-3.mp4": "1daaabbf9f1e", "task-4.mp4": "135fb2a64784", "task-5.mp4": "fd20a18811d7", "task-6.mp4": "aab82ef9f287"};
 "use strict";
+// Task media revisions (content fingerprints).
+const taskMediaRevs = {"task-1.mp4": "8acf8ed5d8fa", "task-2.mp4": "e80177207a0b", "task-3.mp4": "166d50543d3a", "task-4.mp4": "7cf62a06e8c4", "task-5.mp4": "052d8ea26156", "task-6.mp4": "20f631715b1a"};
+const taskPosterRevs = {"task-1.webp": "fc793ba26057", "task-2.webp": "79e5871f2194", "task-3.webp": "f66b6f76c09a", "task-4.webp": "0a77c42c4824", "task-5.webp": "b406f839fd08", "task-6.webp": "270c60f7e1ae"};
 const tasks = [
   ["Pick-and-Lift", "Walk to the table, grasp the bottle, and lift it clear of the support."],
   ["Pick-and-Place", "Grasp the bottle, carry it to the destination, and release it into the box."],
@@ -33,7 +34,8 @@ function activate(tab, focus = false) {
   if (focus) tab.focus();
   panel.setAttribute("aria-labelledby", tab.id);
   player.pause();
-  player.poster = "assets/media/task-" + index + ".webp";
+  const poster = "task-" + index + ".webp";
+  player.poster = "assets/media/" + poster + "?v=" + taskPosterRevs[poster];
   const clip = "task-" + index + ".mp4";
   player.src = "assets/media/" + clip + "?v=" + taskMediaRevs[clip];
   player.setAttribute("aria-label", title + " simulation rollout");
